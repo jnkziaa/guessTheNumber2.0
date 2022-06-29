@@ -1,4 +1,7 @@
+package javaSource;
+
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -27,10 +30,17 @@ public class guessTheNumber {
 
         System.out.println("\nWould you like to play again? (y or n)");
 
-        playAgain(in); //play again prompt
+        String playAgainString = playAgain(in); //play again prompt
+        if(playAgainString.equals("Game Restarting...")){
+            playTheGame();
+        }
+        else {
+            System.out.println(playAgainString);
+            System.exit(0);
+        }
     }
 
-    public static int userGuess(int ranNumber,Scanner in) {
+    public static int userGuess(int ranNumber, Scanner in) {
         int counter = 0;
         int userNumberInput;
         while (true) {
@@ -63,23 +73,21 @@ public class guessTheNumber {
     public static String playAgain(Scanner in) {
         String playAgain;
 
-        try{
-            playAgain = in.nextLine().toLowerCase();
-            if(playAgain.equals("n")){
-                System.out.println("Thank you for playing!");
-                return "Thank you for playing!";
-            }
-            else if(playAgain.equals("y")){
-                System.out.println("Game Restarting...");
-                playTheGame();
-            }
+        while (true) {
+            try {
+                playAgain = in.nextLine().toLowerCase();
+                if (playAgain.equals("n")) {
+                    return "Thank you for playing!";
+                } else if (playAgain.equals("y")) {
+                    //playTheGame();
+                    return "Game Restarting...";
+                }
 
-        }
-        catch (InputMismatchException e){
-            in.nextLine();
+            } catch (NoSuchElementException e) {
+                in.nextLine(); //consume the input to prevent infinite loop
+            }
         }
 
-        return null;
     }
 
 }
