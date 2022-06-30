@@ -24,6 +24,8 @@ public class guessTheNumber {
 
         int counter = userGuess(ranNumber,in); //call userGuess function and return counter as how many times we guessed
 
+        in.nextLine(); //consume the input
+
         //closing prompt
         System.out.println("Good job, " + input + "! You guessed my number in " + counter + " guesses!");
 
@@ -66,7 +68,6 @@ public class guessTheNumber {
             }
 
         }
-        in.nextLine(); //consume the input
         return counter;
     }
 
