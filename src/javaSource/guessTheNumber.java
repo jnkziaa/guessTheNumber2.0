@@ -22,16 +22,16 @@ public class guessTheNumber {
         //name input prompt
         System.out.println("\n\nWell " + input + ", I am thinking of a number between 1 and 20.");
 
-        int counter = userGuess(ranNumber,in);
+        int counter = userGuess(ranNumber,in); //call userGuess function and return counter as how many times we guessed
 
         //closing prompt
         System.out.println("Good job, " + input + "! You guessed my number in " + counter + " guesses!");
-        in.nextLine();
 
         System.out.println("\nWould you like to play again? (y or n)");
 
         String playAgainString = playAgain(in); //play again prompt
         if(playAgainString.equals("Game Restarting...")){
+            System.out.println(playAgainString);
             playTheGame();
         }
         else {
@@ -66,7 +66,7 @@ public class guessTheNumber {
             }
 
         }
-
+        in.nextLine(); //consume the input
         return counter;
     }
 
@@ -82,8 +82,12 @@ public class guessTheNumber {
                     //playTheGame();
                     return "Game Restarting...";
                 }
+                else{
+                    System.out.println("Invalid Input! Please only type y or n");
+                }
 
-            } catch (NoSuchElementException e) {
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid Input! Please only type y or n");
                 in.nextLine(); //consume the input to prevent infinite loop
             }
         }
