@@ -17,7 +17,6 @@ class guessTheNumberTest {
         assertEquals(1, guessTheNumber.userGuess(15, new Scanner(String.valueOf(15))));
 
     }
-
     @Test
     void userInvalidGuesses() { //should throw an error because the user input is a string nor is it a number from 1 to 20
         assertThrows(NoSuchElementException.class, () -> guessTheNumber.userGuess(15, new Scanner("hjklsdjasdasd")));

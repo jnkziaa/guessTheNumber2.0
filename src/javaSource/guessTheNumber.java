@@ -45,16 +45,18 @@ public class guessTheNumber {
     public static int userGuess(int ranNumber, Scanner in) {
         int counter = 0;
         int userNumberInput;
+        System.out.println("Take a guess.");
         while (true) {
-            System.out.println("Take a guess.");
             try {
                 userNumberInput = in.nextInt(); //grab the user input
                 if (userNumberInput > ranNumber) {
                     System.out.println("Your guess is too high. ");
+                    System.out.println("Guess again: ");
                     counter++;
                 }
                 else if (userNumberInput < ranNumber) {
                     System.out.println("Your guess is too low. ");
+                    System.out.println("Guess again: ");
                     counter++;
                 }
                 else {
